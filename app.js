@@ -7,8 +7,8 @@ function getInfo() {
 }
 
 function showMap(position) {
-	var latitude = position.coords.latitude;
-	var longitude = position.coords.longitude;
+    var latitude = Number(position.coords.latitude.toFixed(6));
+    var longitude = Number(position.coords.longitude.toFixed(6));
     $("#coordinatesInfo").html("Latitude: " + latitude + "<br>Longitude: " + longitude + "<br><br>"); 
 
     function initMap() {
