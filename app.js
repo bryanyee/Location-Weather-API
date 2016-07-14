@@ -7,8 +7,8 @@ function getInfo() {
 }
 
 function showMap(position) {
-    var latitude = Number(position.coords.latitude.toFixed(6));
-    var longitude = Number(position.coords.longitude.toFixed(6));
+	var latitude = Number(position.coords.latitude.toFixed(6));
+	var longitude = Number(position.coords.longitude.toFixed(6));
     $("#coordinatesInfo").html("Latitude: " + latitude + "<br>Longitude: " + longitude + "<br><br>"); 
 
     function initMap() {
@@ -26,9 +26,9 @@ function showMap(position) {
 }
 
 function getWeatherData(latitude, longitude){
-    var forecastURL = "https://api.forecast.io/forecast/0f8520f4c584450445574a286536215b/" + latitude + "," + longitude; 
+    var forecastURL = "https://api.forecast.io/forecast/<INSERT_YOUR_API_KEY>/" + latitude + "," + longitude; 
     
-    var temp = "Temperature: ", 
+    var temp = "<div class='large'>", 
         summary = "Summary: ", 
         precipitation = "Precipitation: ", 
         humidity = "Humidity: "; //location, time
@@ -46,12 +46,15 @@ function getWeatherData(latitude, longitude){
 
     function appendWeatherData(response){
         console.log(response);
-        temp += response.currently.temperature;
+        
+        temp += Math.round(response.currently.temperature);
         summary += response.currently.icon;
-        // $("#current_temp").html(Math.round(json.currently.temperature)+"&#176;F");
-        // $("#current_summary").html(json.currently.summary);
+        precipitation += response.currently.precipProbability;
+        humidity += response.currently.humidity;
 
-        $("#weatherInfo").append(temp + "<br>")
-                        .append(summary);
+        $("#weatherInfo").append(temp + "&#176;F</div><br>")
+                        .append(summary + "<br>")
+                        .append(precipitation + "<br>")
+                        .append(humidity + "<br>");
     }
 }

@@ -1,9 +1,22 @@
-#container {
+h1 {
+	text-align: center;
+}
+
+#outer-container {
 	width: 800px;
 	margin: auto;
 }
 
-h1 {
+#left-container{
+	display: inline;
+	float: left;
+}
+
+#right-container{
+	width: 390px;
+	display: inline;
+	float: left;
+	padding-left: 10px;
 	text-align: center;
 }
 
@@ -12,16 +25,6 @@ h1 {
 	width: 400px;
 }
 
-#coordinatesInfo {
-}
-
-#locationMap {
-	display: inline;
-	float: left;
-}
-
-#weatherInfo {
-	display: inline;
-	float: left;
-	padding: 10px;
+.large {
+	font-size: 30pt;
 }
