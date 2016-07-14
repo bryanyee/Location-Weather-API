@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Location & Weather API</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div id="container">
+    	<h1>Location & Weather API</h1>
+        <button onclick="getInfo()">Show current location</button><br><br>
+    	<div id="coordinatesInfo"></div>
+    	<div id="locationMap">
+    		<div id="map"></div>
+    	</div>
+    	<div id="weatherInfo"></div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<INSERT_YOUR_GOOGLE_API_KEY>&callback=initMap" async defer></script>
+<script src="app.js"></script>
+</body>
+</html>
+
