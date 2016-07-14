@@ -21,4 +21,37 @@ function showMap(position) {
     }
 
     initMap();
+
+    getWeatherData(latitude, longitude);
+}
+
+function getWeatherData(latitude, longitude){
+    var forecastURL = "https://api.forecast.io/forecast/0f8520f4c584450445574a286536215b/" + latitude + "," + longitude; 
+    
+    var temp = "Temperature: ", 
+        summary = "Summary: ", 
+        precipitation = "Precipitation: ", 
+        humidity = "Humidity: "; //location, time
+
+    $.ajax({
+        url: forecastURL,
+        jsonpCallback: 'jsonCallback',
+        contentType: "application/json",
+        dataType: 'jsonp',
+        success: appendWeatherData,
+        error: function(e) {
+           console.log(e.message);
+        }
+    });
+
+    function appendWeatherData(response){
+        console.log(response);
+        temp += response.currently.temperature;
+        summary += response.currently.icon;
+        // $("#current_temp").html(Math.round(json.currently.temperature)+"&#176;F");
+        // $("#current_summary").html(json.currently.summary);
+
+        $("#weatherInfo").append(temp + "<br>")
+                        .append(summary);
+    }
 }

@@ -11,3 +11,17 @@ h1 {
 	height: 400px;
 	width: 400px;
 }
+
+#coordinatesInfo {
+}
+
+#locationMap {
+	display: inline;
+	float: left;
+}
+
+#weatherInfo {
+	display: inline;
+	float: left;
+	padding: 10px;
+}
