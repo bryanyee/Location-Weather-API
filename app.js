@@ -4,6 +4,8 @@ function getLocationInfo() {
     } else {
         $("#coordinatesInfo").html("Geolocation is not supported by this browser.");
     }
+
+    $("#chooseLocation").val("");
 }
 
 function getCurrentCoordinates(position){
