@@ -1,6 +1,6 @@
 function getLocationInfo() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(getCurrentCoordinates);
+        navigator.geolocation.getCurrentPosition(getCurrentCoordinates); //request to navigator.geolocation
     } else {
         $("#coordinatesInfo").html("Geolocation is not supported by this browser.");
     }
@@ -38,6 +38,7 @@ function getWeatherData(latitude, longitude){
         precipitation = "Precipitation: ", 
         humidity = "Humidity: ";
 
+    //Forecast.io API request
     $.ajax({
         url: forecastURL,
         jsonpCallback: 'jsonCallback',
@@ -72,7 +73,7 @@ function chooseLocation(){
     locationURL += "&key=" + key;
     console.log(locationURL);
 
-    //$.getJSON(locationURL, getChosenCoordinates);
+    $.getJSON(locationURL, getChosenCoordinates); //Google Maps Geocoding API request
 }
 
 
@@ -81,6 +82,9 @@ function trimLocationSearch(searchString){
 }
 
 function getChosenCoordinates(response){
-    // 1. Use the response to retrieve the desired cooridnates
-    // 2. call showMap() with the coordinates as parameters
+    console.log(response);
+    var latitude = Number(response.results[0].geometry.location.lat.toFixed(6));
+    var longitude = Number(response.results[0].geometry.location.lng.toFixed(6));
+
+    showMap(latitude, longitude);
 }
