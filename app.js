@@ -7,8 +7,8 @@ function getLocationInfo() {
 }
 
 function getCurrentCoordinates(position){
-    var latitude = Number(position.coords.latitude.toFixed(6));
-    var longitude = Number(position.coords.longitude.toFixed(6));
+	var latitude = Number(position.coords.latitude.toFixed(6));
+	var longitude = Number(position.coords.longitude.toFixed(6));
 
     showMap(latitude,longitude);
 }
@@ -58,7 +58,7 @@ function getWeatherData(latitude, longitude){
         precipitation += response.currently.precipProbability;
         humidity += response.currently.humidity;
 
-        $("#weatherInfo").append(temp + "&#176;F</div><br>")
+        $("#weatherInfo").html(temp + "&#176;F</div><br>")
                         .append(summary + "<br>")
                         .append(precipitation + "<br>")
                         .append(humidity + "<br>");
