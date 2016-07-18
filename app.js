@@ -31,7 +31,7 @@ function showMap(latitude, longitude) {
 }
 
 function getWeatherData(latitude, longitude){
-    var forecastURL = "https://api.forecast.io/forecast/<INSERT YOUR API KEY>/" + latitude + "," + longitude; 
+    var forecastURL = "https://api.forecast.io/forecast/<INSERT_YOUR_API_KEY>/" + latitude + "," + longitude; 
     
     var temp = "<div class='large'>", 
         summary = "Summary: ", 
@@ -65,5 +65,22 @@ function getWeatherData(latitude, longitude){
 }
 
 function chooseLocation(){
-    //use geocoding API to retrieve coordinates of the specified location
+    var chosenLocation = trimLocationSearch($("#chooseLocation").val());
+    var key = "<INSERT_YOUR_API_KEY>";
+    var locationURL = "https://maps.googleapis.com/maps/api/geocode/json?";
+    locationURL += "address=" + chosenLocation;
+    locationURL += "&key=" + key;
+    console.log(locationURL);
+
+    //$.getJSON(locationURL, getChosenCoordinates);
+}
+
+
+function trimLocationSearch(searchString){
+    return searchString.replace(/^\s+|\s+$/g, "").replace(/\s+/g, "+");
+}
+
+function getChosenCoordinates(response){
+    // 1. Use the response to retrieve the desired cooridnates
+    // 2. call showMap() with the coordinates as parameters
 }
