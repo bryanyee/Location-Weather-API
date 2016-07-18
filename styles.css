@@ -2,9 +2,19 @@ h1 {
 	text-align: center;
 }
 
+button {
+	background-color: #d3d3d3
+}
+
 #outer-container {
 	width: 800px;
 	margin: auto;
+}
+
+#upper-container {
+	margin-bottom: 10px;
+	border: 1px solid #d3d3d3;
+	padding: 10px;
 }
 
 #left-container{

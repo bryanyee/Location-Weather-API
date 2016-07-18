@@ -1,14 +1,19 @@
-function getInfo() {
+function getLocationInfo() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showMap);
+        navigator.geolocation.getCurrentPosition(getCurrentCoordinates);
     } else {
         $("#coordinatesInfo").html("Geolocation is not supported by this browser.");
     }
 }
 
-function showMap(position) {
-	var latitude = Number(position.coords.latitude.toFixed(6));
-	var longitude = Number(position.coords.longitude.toFixed(6));
+function getCurrentCoordinates(position){
+    var latitude = Number(position.coords.latitude.toFixed(6));
+    var longitude = Number(position.coords.longitude.toFixed(6));
+
+    showMap(latitude,longitude);
+}
+
+function showMap(latitude, longitude) {
     $("#coordinatesInfo").html("Latitude: " + latitude + "<br>Longitude: " + longitude + "<br><br>"); 
 
     function initMap() {
@@ -26,12 +31,12 @@ function showMap(position) {
 }
 
 function getWeatherData(latitude, longitude){
-    var forecastURL = "https://api.forecast.io/forecast/<INSERT_YOUR_API_KEY>/" + latitude + "," + longitude; 
+    var forecastURL = "https://api.forecast.io/forecast/<INSERT YOUR API KEY>/" + latitude + "," + longitude; 
     
     var temp = "<div class='large'>", 
         summary = "Summary: ", 
         precipitation = "Precipitation: ", 
-        humidity = "Humidity: "; //location, time
+        humidity = "Humidity: ";
 
     $.ajax({
         url: forecastURL,
@@ -46,7 +51,7 @@ function getWeatherData(latitude, longitude){
 
     function appendWeatherData(response){
         console.log(response);
-        
+
         temp += Math.round(response.currently.temperature);
         summary += response.currently.icon;
         precipitation += response.currently.precipProbability;
@@ -57,4 +62,8 @@ function getWeatherData(latitude, longitude){
                         .append(precipitation + "<br>")
                         .append(humidity + "<br>");
     }
+}
+
+function chooseLocation(){
+    //use geocoding API to retrieve coordinates of the specified location
 }

@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Location & Weather API</title>
+    <title>Location & Weather API</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <h1>Location & Weather API</h1>
     <div id="outer-container">
+        <div id="upper-container">
+            <button onclick="getLocationInfo()">Show Data for Current Location</button><br><br>OR<br><br>
+            <label for="chooseLocation">Enter a Location: </label>
+            <input id="chooseLocation" type="text"></input>
+            <button onclick="chooseLocation">Go!</button>
+        </div>
         <div id="left-container">
-            <button onclick="getInfo()">Show Data for Current Location</button><br><br>
-        	<div id="coordinatesInfo"></div>
+            <div id="coordinatesInfo"></div>
             <div id="locationMap"><div id="map"></div></div>
         </div>
         <div id="right-container">
-    	    <div id="weatherInfo"></div>
+            <div id="weatherInfo"></div>
         </div>
     <div><!-- end of outer-container -->
 
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<INSERT_YOUR_API_KEY>&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<INSERT YOUR APIT KEY>&callback=initMap" async defer></script>
 <script src="app.js"></script>
 </body>
 </html>
