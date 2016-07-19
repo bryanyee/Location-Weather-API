@@ -1,3 +1,5 @@
+var map;
+
 function getLocationInfo() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(getCurrentCoordinates); //request to navigator.geolocation
@@ -9,8 +11,8 @@ function getLocationInfo() {
 }
 
 function getCurrentCoordinates(position){
-	var latitude = Number(position.coords.latitude.toFixed(6));
-	var longitude = Number(position.coords.longitude.toFixed(6));
+    var latitude = Number(position.coords.latitude.toFixed(6));
+    var longitude = Number(position.coords.longitude.toFixed(6));
 
     showMap(latitude,longitude);
 }
@@ -19,16 +21,27 @@ function showMap(latitude, longitude) {
     $("#coordinatesInfo").html("Latitude: " + latitude + "<br>Longitude: " + longitude + "<br><br>"); 
 
     function initMap() {
-      // Create a map object and specify the DOM element for display.
-      var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: latitude, lng: longitude},
-        scrollwheel: false,
-        zoom: 10
-      });
+        // Create a map object and specify the DOM element for display.
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: latitude, lng: longitude},
+            scrollwheel: false,
+            zoom: 10
+        });
     }
 
     initMap();
 
+    $("#updateMapButton").show();
+
+    getWeatherData(latitude, longitude);
+}
+
+function updateMap(){
+    var latitude = Number(map.center.lat().toFixed(6));
+    var longitude = Number(map.center.lng().toFixed(6));
+
+    $("#coordinatesInfo").html("Latitude: " + latitude + "<br>Longitude: " + longitude + "<br><br>"); 
+    $("#chooseLocation").val("");
     getWeatherData(latitude, longitude);
 }
 

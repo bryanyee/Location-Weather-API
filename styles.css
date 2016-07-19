@@ -6,6 +6,10 @@ button {
 	background-color: #d3d3d3
 }
 
+#updateMapButton {
+	display: none;
+}
+
 #outer-container {
 	width: 800px;
 	margin: auto;
@@ -20,6 +24,7 @@ button {
 #left-container{
 	display: inline;
 	float: left;
+	margin-bottom: 20px;
 }
 
 #right-container{
