@@ -6,6 +6,10 @@ button {
 	background-color: #d3d3d3
 }
 
+button:focus {
+	outline: none;
+}
+
 #updateMapButton {
 	display: none;
 }
